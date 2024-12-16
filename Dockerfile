@@ -32,4 +32,4 @@ COPY entrypoint.py .
 ENV PYTHONPATH=/app
 
 # Set the entrypoint
-ENTRYPOINT ["python3.9", "/app/entrypoint.py"]
+ENTRYPOINT ["python3", "/app/entrypoint.py"]

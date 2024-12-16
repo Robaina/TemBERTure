@@ -1,5 +1,5 @@
-transformers
 adapters
+transformers
 tqdm
 numpy
 torch
