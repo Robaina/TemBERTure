@@ -2,6 +2,7 @@
 
 import sys
 import argparse
+import torch
 from temBERTure import TemBERTure
 
 
@@ -12,10 +13,21 @@ def print_usage():
     print("Example: docker run temberture --cls MEKVYGLIGFPVEH...")
 
 
+def get_device():
+    """Determine if CUDA is available and return appropriate device"""
+    if torch.cuda.is_available():
+        print("CUDA is available. Using GPU.")
+        return "cuda"
+    else:
+        print("CUDA is not available. Using CPU.")
+        return "cpu"
+
+
 def run_cls(sequence):
+    device = get_device()
     model = TemBERTure(
         adapter_path="./temBERTure_CLS/",
-        device="cuda",
+        device=device,
         batch_size=1,
         task="classification",
     )
@@ -24,10 +36,11 @@ def run_cls(sequence):
 
 
 def run_tm(sequence):
+    device = get_device()
     models = [
         TemBERTure(
             adapter_path=f"./temBERTure_TM/replica{i}/",
-            device="cuda",
+            device=device,
             batch_size=16,
             task="regression",
         )

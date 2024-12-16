@@ -18,7 +18,7 @@ RUN apt update && apt install -y \
 COPY temBERTure/requirements.txt .
 
 # Install Python dependencies
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip3 install --no-cache-dir -r requirements.txt
 
 # Copy the TemBERTure code and models
 COPY temBERTure/temBERTure.py .
@@ -30,7 +30,6 @@ COPY entrypoint.py .
 
 # Set environment variables
 ENV PYTHONPATH=/app
-ENV CUDA_VISIBLE_DEVICES=0
 
 # Set the entrypoint
-ENTRYPOINT ["python", "/app/entrypoint.py"]
+ENTRYPOINT ["python3.9", "/app/entrypoint.py"]
