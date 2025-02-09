@@ -1,3 +1,12 @@
+# :warning: Fork changes :warning: :
+
+* Created a Dockerfile and entry point to run tool as a docker container
+
+```
+cd TemBERTure
+docker build -t temberture:latest .
+```
+
 <div align="center">   
 <img title="logo" alt="" src="logo.png"  width="600" height="300" align="center">      
 
